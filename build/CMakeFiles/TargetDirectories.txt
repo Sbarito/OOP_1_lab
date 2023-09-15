@@ -1,3 +1,16 @@
-C:/OOP/laba 1/build/CMakeFiles/mainn.dir
-C:/OOP/laba 1/build/CMakeFiles/edit_cache.dir
-C:/OOP/laba 1/build/CMakeFiles/rebuild_cache.dir
+C:/OOP_1_lab/build/CMakeFiles/main_lab.dir
+C:/OOP_1_lab/build/CMakeFiles/test_lab.dir
+C:/OOP_1_lab/build/CMakeFiles/main_lib.dir
+C:/OOP_1_lab/build/CMakeFiles/INSTALL.dir
+C:/OOP_1_lab/build/CMakeFiles/ALL_BUILD.dir
+C:/OOP_1_lab/build/CMakeFiles/ZERO_CHECK.dir
+C:/OOP_1_lab/build/googletest/CMakeFiles/INSTALL.dir
+C:/OOP_1_lab/build/googletest/CMakeFiles/ALL_BUILD.dir
+C:/OOP_1_lab/build/googletest/googlemock/CMakeFiles/gmock.dir
+C:/OOP_1_lab/build/googletest/googlemock/CMakeFiles/gmock_main.dir
+C:/OOP_1_lab/build/googletest/googlemock/CMakeFiles/INSTALL.dir
+C:/OOP_1_lab/build/googletest/googlemock/CMakeFiles/ALL_BUILD.dir
+C:/OOP_1_lab/build/googletest/googletest/CMakeFiles/gtest.dir
+C:/OOP_1_lab/build/googletest/googletest/CMakeFiles/gtest_main.dir
+C:/OOP_1_lab/build/googletest/googletest/CMakeFiles/INSTALL.dir
+C:/OOP_1_lab/build/googletest/googletest/CMakeFiles/ALL_BUILD.dir
