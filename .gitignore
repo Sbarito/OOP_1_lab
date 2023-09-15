@@ -85,7 +85,7 @@ out/
 
 # Gradle files
 .gradle/
-.build/
+build/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -360,7 +360,7 @@ tmtags
 **/nbproject/private/
 **/nbproject/Makefile-*.mk
 **/nbproject/Package-*.bash
-.build/
+build/
 nbbuild/
 dist/
 nbdist/
