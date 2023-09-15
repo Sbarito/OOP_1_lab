@@ -14,7 +14,7 @@ set(TEST_DIR ${CMAKE_CURRENT_SOURCE_DIR}/test)
 
 set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-add_executable(main_lab ${SOURCE_DIR}/main.cpp)
+add_executable(main_lab main.cpp)
 
 add_executable(test_lab ${TEST_DIR}/test.cpp)
 

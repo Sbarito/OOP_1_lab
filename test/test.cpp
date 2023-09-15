@@ -1,9 +1,6 @@
 #include <gtest/gtest.h>
 #include "../src/includes.h"
-#include "../src/function_first.h"
-#include "../src/function_second.h"
-#include "../src/function_third.h"
-#include "../src/function_fourth.h"
+#include "../src/functions.h"
 
 
 TEST(isVowel, vowel) {
