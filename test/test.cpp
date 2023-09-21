@@ -8,10 +8,10 @@ TEST(isVowel, vowel) {
   char symbol = 'a';
 
   // act
-  bool vowel = true_vowel(symbol);
+  bool vowel = isVowel(symbol);
 
   // assert
-  EXPECT_EQ(vowel, true);
+  ASSERT_EQ(vowel, true);
 }
 
 TEST(isVowel, capitalLetter) {
@@ -19,10 +19,10 @@ TEST(isVowel, capitalLetter) {
   char symbol = 'A';
 
   // act
-  bool capitalLetter = true_vowel(symbol);
+  bool capitalLetter = isVowel(symbol);
 
   // assert
-  EXPECT_EQ(capitalLetter, false);
+  ASSERT_EQ(capitalLetter, false);
 }
 
 TEST(isVowel, latin) {
@@ -30,10 +30,10 @@ TEST(isVowel, latin) {
   char symbol = 'а';
 
   // act
-  bool latin = true_vowel(symbol);
+  bool latin = isVowel(symbol);
 
   // assert
-  EXPECT_EQ(latin, false);
+  ASSERT_EQ(latin, false);
 }
 
 TEST(isVowel, consonant) {
@@ -41,10 +41,10 @@ TEST(isVowel, consonant) {
   char symbol = 'b';
 
   // act
-  bool consonant = true_vowel(symbol);
+  bool consonant = isVowel(symbol);
 
   // assert
-  EXPECT_EQ(consonant, false);
+  ASSERT_EQ(consonant, false);
 }
 
 TEST(isVowel, space) {
@@ -52,10 +52,10 @@ TEST(isVowel, space) {
   char symbol = ' ';
 
   // act
-  bool space = true_vowel(symbol);
+  bool space = isVowel(symbol);
 
   // assert
-  EXPECT_EQ(space, false);
+  ASSERT_EQ(space, false);
 }
 
 TEST(isVowel, number) {
@@ -63,10 +63,10 @@ TEST(isVowel, number) {
   char symbol = '9';
 
   // act
-  bool number = true_vowel(symbol);
+  bool number = isVowel(symbol);
 
   // assert
-  EXPECT_EQ(number, false);
+  ASSERT_EQ(number, false);
 }
 
 // ================================================================================= //
@@ -79,7 +79,7 @@ TEST(findVowel, vowel) {
   int vowel = findVowels(sentence);
 
   // assert
-  EXPECT_EQ(vowel, 2);
+  ASSERT_EQ(vowel, 2);
 }
 
 TEST(findVowel, vowel_with_space) {
@@ -90,7 +90,7 @@ TEST(findVowel, vowel_with_space) {
   int vowel = findVowels(sentence);
 
   // assert
-  EXPECT_EQ(vowel, 2);
+  ASSERT_EQ(vowel, 2);
 }
 
 TEST(findVowel, consonant) {
@@ -101,7 +101,7 @@ TEST(findVowel, consonant) {
   int vowel = findVowels(sentence);
 
   // assert
-  EXPECT_EQ(vowel, 0);
+  ASSERT_EQ(vowel, 0);
 }
 
 TEST(findVowel, space) {
@@ -112,7 +112,7 @@ TEST(findVowel, space) {
   int vowel = findVowels(sentence);
 
   // assert
-  EXPECT_EQ(vowel, 0);
+  ASSERT_EQ(vowel, 0);
 }
 
 // ================================================================================= //
@@ -125,7 +125,7 @@ TEST(isValidity, capitalLetter) {
   int vowel = findVowels(sentence);
 
   // assert
-  EXPECT_EQ(vowel, -1);
+  ASSERT_EQ(vowel, -1);
 }
 
 TEST(isValidity, latin) {
@@ -136,7 +136,7 @@ TEST(isValidity, latin) {
   int vowel = findVowels(sentence);
 
   // assert
-  EXPECT_EQ(vowel, -1);
+  ASSERT_EQ(vowel, -1);
 }
 
 TEST(isValidity, number) {
@@ -147,7 +147,7 @@ TEST(isValidity, number) {
   int vowel = findVowels(sentence);
 
   // assert
-  EXPECT_EQ(vowel, -1);
+  ASSERT_EQ(vowel, -1);
 }
 
 // ================================================================================= //
@@ -157,10 +157,10 @@ TEST(isValid, capitalLetter) {
   char symbol = 'A';
 
   // act
-  bool capitalLetter = valid_false(symbol);
+  bool capitalLetter = validSymbol(symbol);
 
   // assert
-  EXPECT_EQ(capitalLetter, true);
+  ASSERT_EQ(capitalLetter, true);
 }
 
 TEST(isValid, space) {
@@ -168,10 +168,10 @@ TEST(isValid, space) {
   char symbol = ' ';
 
   // act
-  bool space = valid_false(symbol);
+  bool space = validSymbol(symbol);
 
   // assert
-  EXPECT_EQ(space, false);
+  ASSERT_EQ(space, false);
 }
 
 TEST(isValid, letter) {
@@ -179,10 +179,10 @@ TEST(isValid, letter) {
   char symbol = 'a';
 
   // act
-  bool letter = valid_false(symbol);
+  bool letter = validSymbol(symbol);
 
   // assert
-  EXPECT_EQ(letter, false);
+  ASSERT_EQ(letter, false);
 }
 
 TEST(isValid, latin) {
@@ -190,10 +190,10 @@ TEST(isValid, latin) {
   char symbol = 'а';
 
   // act
-  bool latin = valid_false(symbol);
+  bool latin = validSymbol(symbol);
 
   // assert
-  EXPECT_EQ(latin, true);
+  ASSERT_EQ(latin, true);
 }
 
 TEST(isValid, number) {
@@ -201,10 +201,10 @@ TEST(isValid, number) {
   char symbol = '9';
 
   // act
-  bool number = valid_false(symbol);
+  bool number = validSymbol(symbol);
 
   // assert
-  EXPECT_EQ(number, true);
+  ASSERT_EQ(number, true);
 }
 
 // ================================================================================= //
@@ -217,7 +217,7 @@ TEST(output, indexTrue) {
   string msg = output(numberOfVowels);
 
   // assert
-  EXPECT_EQ(msg, ("Number of vowels: " + to_string(numberOfVowels)));
+  ASSERT_EQ(msg, ("Number of vowels: " + to_string(numberOfVowels)));
 }
 
 TEST(output, indexFalse) {
@@ -228,7 +228,7 @@ TEST(output, indexFalse) {
   string msg = output(numberOfVowels);
 
   // assert
-  EXPECT_EQ(msg, ("Invalid input"));
+  ASSERT_EQ(msg, ("Invalid input"));
 }
 
 

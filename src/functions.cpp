@@ -1,31 +1,30 @@
 #include <vector>
 #include "includes.h"
 
-bool valid_false(char symbol) {
+bool validSymbol(char symbol) {
     vector<char> symbols {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' '};
-    int flag = 0;
     for (int i = 0; i < symbols.size(); i++) {
         if (symbols[i] == symbol) {
-                flag = 1;
-                break;
+                return false;
         };
     }
-    return !(flag == 1);
+    return true;
 }
 
+extern bool validSymbol(char symbol);
+extern bool isVowel(char symbol);
+
 int findVowels(string stringUser) {
-        int numberOfVowels = 0;
-        extern bool valid_false(char symbol);
-        extern bool true_vowel(char symbol);
-        for(int i = 0; i < stringUser.size(); ++i) {
-                if (valid_false(stringUser[i])){
-                        numberOfVowels = -1;
-                        break;
-                }
-                if(true_vowel(stringUser[i]))
-                numberOfVowels += 1;
+    int numberOfVowels = 0;
+    for(int i = 0; i < stringUser.size(); ++i) {
+        if (validSymbol(stringUser[i])){
+                numberOfVowels = -1;
+                break;
         }
-        return numberOfVowels;
+        if(isVowel(stringUser[i]))
+            numberOfVowels += 1;
+    }
+    return numberOfVowels;
 }
 
 string output(int numberOfVowels) {
@@ -36,6 +35,6 @@ string output(int numberOfVowels) {
         };
 }
 
-bool true_vowel(char symbol) {
+extern bool isVowel(char symbol) {
     return ((symbol == 'a') || (symbol == 'e') || (symbol == 'y') || (symbol == 'u') || (symbol == 'i') || (symbol == 'o'));
 }
