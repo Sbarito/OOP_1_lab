@@ -1,7 +1,7 @@
 //4 var: finding vowels in a sentence
 
-#include "src/includes.h"
-#include "src/functions.h"
+#include "includes.h"
+#include "functions.h"
 
 
 
