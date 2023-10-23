@@ -1,10 +1,8 @@
-﻿cmake_minimum_required(VERSION 3.13)
-project(lab0)
+﻿﻿cmake_minimum_required(VERSION 3.13)
 
-#set(CMAKE_CXX_STANDARD 20)
-#set(CMAKE_CXX_STANDARD_REQUIRED ON)
+project(3_lab)
 
-#add_compile_options(-g)
+set(CMAKE_CXX_STANDARD 20)
 
 set(GOOGLETEST_VERSION 1.14.0)
 
