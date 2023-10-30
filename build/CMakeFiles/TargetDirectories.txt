@@ -1,3 +1,0 @@
-C:/OOP/laba 1/build/CMakeFiles/mainn.dir
-C:/OOP/laba 1/build/CMakeFiles/edit_cache.dir
-C:/OOP/laba 1/build/CMakeFiles/rebuild_cache.dir
