@@ -1,226 +1,151 @@
-#include "four.h"
+#include "Point.h"
+#include "Trapezoid.h"
+#include "Rhomb.h"
+#include "Pentagon.h"
+#include "Figure.h"
+#include "Vector.h"
 #include <gtest/gtest.h>
-#include "string"
 #include <stdexcept>
 
-using namespace four;
 
 // ================================================================================= //
 
-TEST(setGet, setValueTest) {
+TEST(Point, getY) {
   // arrange 
-  Four firstVariable;
-  firstVariable.setValue("1111");
+  Point point(3, 9);
 
   // act
-  bool equals = firstVariable.getValue() == 1111;
+  double y = point.getY();
 
   // assert
-  ASSERT_EQ(equals, true);
+  ASSERT_EQ(y, 9);
 }
 
-// ================================================================================= //
-
-TEST(operatorCopy, copy) {
+TEST(Point, getX) {
   // arrange 
-  Four firstVariable("1111");
-  Four secondVariable("2222");
+  Point point(3, 9);
 
   // act
-  secondVariable = firstVariable;
+  double x = point.getX();
 
   // assert
-  ASSERT_EQ(secondVariable.getValue(), firstVariable.getValue());
+  ASSERT_EQ(x, 3);
 }
 
-// ================================================================================= //
-
-TEST(operatorEquals, operatorCopy) {
+TEST(Point, notEqual) {
   // arrange 
-  Four firstVariable("1111");
-  Four Variable("1111");
+  Point point(3, 9);
 
   // act
-  bool equals = firstVariable == Variable;
+  double x = point.getX();
+  double y = point.getY();
 
   // assert
-  ASSERT_EQ(equals, true);
+  ASSERT_NE(x, y);
 }
-
-TEST(operatorEquals, equals) {
-  
-  Four equalsFirstVariable("1001");
-  Four equalsSecondVariable("1001");
-  
-  // arrange 
-  bool equals = equalsFirstVariable == equalsSecondVariable;;
-
-  // assert
-  ASSERT_EQ(equals, true);
-}
-
-TEST(operatorEquals, notEquals) {
-
-  Four firstVariable("1111");
-  Four secondVariable("131");
-  
-  // arrange 
-  bool equals = firstVariable == secondVariable;
-
-  // assert
-  ASSERT_EQ(equals, false);
-} 
 
 // ================================================================================= //
 
-TEST(operatorLessThan, differentLentght) {
+TEST(Figure, getArray) {
+  // arrange 
+  Vector <Point> array;
+  array.push_back(Point(1, 0));
+  array.push_back(Point(2, 8));
+  Figure figure(array);
+
+  // act
+  Vector <Point> arraySecond = figure.getArray();
+
+  // assert
+  ASSERT_EQ(arraySecond, {Point(1, 0), Point(2, 8)});
+}
+
+TEST(Figure, center) {
+  // arrange 
+  Vector <Point> array;
+  array.push_back(Point(1, 0));
+  array.push_back(Point(2, 8));
+  Figure figure(array);
+
+  // act
+  Point center = figure.center();
+
+  // assert
+  ASSERT_EQ(center, Point(1.5, 4));
+}
+
+TEST(Figure, comparison) {
+  // arrange 
+  Vector <Point> array;
+  array.push_back(Point(1, 0));
+  array.push_back(Point(2, 8));
+  Figure figure(array);
+  Figure secondFigure(array);
+
+  // act
+  bool comparison = (figure == secondFigure);
+
+  // assert
+  ASSERT_EQ(comparison, true);
+}
+
+// ================================================================================= //
+
+TEST(Pentagon, area) {
+  // arrange 
+  Vector <Point> array;
+  array.push_back(Point(1, 0));
+  array.push_back(Point(2, 10));
+  array.push_back(Point(7, 0));
+  array.push_back(Point(0, 0));
+  array.push_back(Point(0, 5));
+  Pentagon figure(array);
+
+  // arrange 
+  double area = static_cast<double>(figure);
+
+  // assert
+  ASSERT_EQ(area, 52.5);
+}
+
+// ================================================================================= //
+
+TEST(Rhomb, area) {
+  // arrange 
+  Vector <Point> array;
+  array.push_back(Point(1, 5));
+  array.push_back(Point(2, 8));
+  array.push_back(Point(7, 0));
+  array.push_back(Point(0, 8));
+  Rhomb figure(array);
+
+  // arrange 
+  double area = static_cast<double>(figure);
+
+  // assert
+  ASSERT_EQ(area, 5);
+}
+
+// ================================================================================= //
+
+TEST(Trapezoid, area) {
   
-  Four firstVariable("1111");
-  Four secondVariable("131");
+  // arrange
+  Vector <Point> array;
+  array.push_back(Point(1, 0));
+  array.push_back(Point(2, 8));
+  array.push_back(Point(7, 0));
+  array.push_back(Point(0, 8));
+  Trapezoid figure(array);
    
   // arrange 
-  bool result = (secondVariable < firstVariable);
+  double area = static_cast<double>(figure);
 
   // assert
-  ASSERT_EQ(result, true);
-}
-
-TEST(operatorLessThan, equalsLentght) {
-
-  Four firstVariable("1111");
-  Four equalsFirstVariable("1001");
-  
-  // arrange 
-  bool result = (equalsFirstVariable < firstVariable);
-
-  // assert
-  ASSERT_EQ(result, false);
-}
-
-TEST(operatorLessThan, equalsSymbol) {
-
-  Four equalsFirstVariable("1001");
-  Four equalsSecondVariable("1001");
-  // arrange 
-  bool result = (equalsSecondVariable < equalsFirstVariable);
-
-  // assert
-  ASSERT_EQ(result, false);
+  ASSERT_EQ(area, 32 );
 }
 
 // ================================================================================= //
-
-TEST(operatorGreaterThan, differentLentght) {
-
-  Four firstVariable("1111");
-  Four secondVariable("131");
-
-  // act
-  bool result = (firstVariable > secondVariable);
-
-  // assert
-  ASSERT_EQ(result, true);
-}
-
-TEST(operatorGreaterThan, equalsLentght) {
-
-  Four firstVariable("1111");
-  Four equalsFirstVariable("1001");
-
-  // act
-  bool result = (firstVariable > equalsFirstVariable);
-
-  // assert
-  ASSERT_EQ(result, true);
-}
-
-TEST(operatorGreaterThan, equalsSymbol) {
-
-  Four equalsFirstVariable("1001");
-  Four equalsSecondVariable("1001");
-
-  // act
-  bool result = (equalsFirstVariable > equalsSecondVariable);
-
-  // assert
-  ASSERT_EQ(result, false);
-}
-
-// ================================================================================= //
-
-TEST(operatorPlus, equalsLenghtWithoutRank) {
-  
-  Four firstVariable("1111");
-  Four equalsFirstVariable("1001");
-
-  // act
-  Four result = (firstVariable + equalsFirstVariable);
-
-  // assert
-  ASSERT_EQ(result.getValue(), 2112);
-}
-
-TEST(operatorPlus, differentLenghtWithoutRank) {
-
-  Four firstVariable("1111");
-  Four secondVariable("131");
-  
-  // act
-  Four result = (firstVariable + secondVariable);
-
-  // assert
-  ASSERT_EQ(result.getValue(), 1302);
-}
-
-TEST(operatorPlus, zero) {
-  Four firstVariable("1");
-  Four secondVariable("0");
-  
-  // act
-  Four result = (firstVariable - secondVariable);
-
-  // assert
-  ASSERT_EQ(result.getValue(), 1);
-
-}
-
-// ================================================================================= //
-
-TEST(operatorMinus, equalsLenghtWithoutRank) {
-
-  Four firstVariable("1111");
-  Four equalsFirstVariable("1001");
-
-  // act
-  Four result = (firstVariable - equalsFirstVariable);
-
-  // assert
-  ASSERT_EQ(result.getValue(), 110);
-}
-
-TEST(operatorMinus, differentLenghtWithRank) {
-  Four firstVariable("1111");
-  Four secondVariable("131");
-  
-  // act
-  Four result = (firstVariable - secondVariable);
-
-  // assert
-  ASSERT_EQ(result.getValue(), 320);
-
-}
-
-TEST(operatorMinus, zero) {
-  Four firstVariable("1");
-  Four secondVariable("1");
-  
-  // act
-  Four result = (firstVariable - secondVariable);
-
-  // assert
-  ASSERT_EQ(result.getValue(), 0);
-
-}
 
 
 int main(int argc, char **argv) {

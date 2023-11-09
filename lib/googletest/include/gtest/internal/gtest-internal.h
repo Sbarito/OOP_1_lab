@@ -651,7 +651,7 @@ inline std::string GetPrefixUntilComma(const char* str) {
 }
 
 // Splits a given string on a given delimiter, populating a given
-// vector with the fields.
+// value with the fields.
 void SplitString(const ::std::string& str, char delimiter,
                  ::std::vector<::std::string>* dest);
 

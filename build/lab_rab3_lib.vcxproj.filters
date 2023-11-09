@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\2b100\OneDrive\Рабочий стол\git2\src\Figure.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\2b100\OneDrive\Рабочий стол\git2\src\Pentagon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\2b100\OneDrive\Рабочий стол\git2\src\Point.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\2b100\OneDrive\Рабочий стол\git2\src\Rhomb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\2b100\OneDrive\Рабочий стол\git2\src\Trapezoid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\2b100\OneDrive\Рабочий стол\git2\src\ValidatePentagon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\2b100\OneDrive\Рабочий стол\git2\src\ValidateRhomb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\2b100\OneDrive\Рабочий стол\git2\src\ValidateTrapezoid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\2b100\OneDrive\Рабочий стол\git2\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{D881F896-9D87-3AE6-AE31-5F527AEA9834}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

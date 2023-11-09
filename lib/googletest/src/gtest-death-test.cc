@@ -629,7 +629,7 @@ bool DeathTestImpl::Passed(bool status_ok) {
 // Note: The return value points into args, so the return value's lifetime is
 // bound to that of args.
 static std::unique_ptr<char*[]> CreateArgvFromArgs(
-    std::vector<std::string>& args) {
+    std::value<std::string>& args) {
   auto result = std::make_unique<char*[]>(args.size() + 1);
   for (size_t i = 0; i < args.size(); ++i) {
     result[i] = &args[i][0];
@@ -975,7 +975,7 @@ DeathTest::TestRole FuchsiaDeathTest::AssumeRole() {
                                     "|" + StreamableToString(line_) + "|" +
                                     StreamableToString(death_test_index);
 
-  std::vector<std::string> args = GetInjectableArgvs();
+  std::value<std::string> args = GetInjectableArgvs();
   args.push_back(filter_flag);
   args.push_back(internal_flag);
 
@@ -1152,10 +1152,10 @@ class ExecDeathTest : public ForkingDeathTest {
   TestRole AssumeRole() override;
 
  private:
-  static ::std::vector<std::string> GetArgvsForDeathTestChildProcess() {
-    ::std::vector<std::string> args = GetInjectableArgvs();
+  static ::std::value<std::string> GetArgvsForDeathTestChildProcess() {
+    ::std::value<std::string> args = GetInjectableArgvs();
 #if defined(GTEST_EXTRA_DEATH_TEST_COMMAND_LINE_ARGS_)
-    ::std::vector<std::string> extra_args =
+    ::std::value<std::string> extra_args =
         GTEST_EXTRA_DEATH_TEST_COMMAND_LINE_ARGS_();
     args.insert(args.end(), extra_args.begin(), extra_args.end());
 #endif  // defined(GTEST_EXTRA_DEATH_TEST_COMMAND_LINE_ARGS_)
@@ -1375,7 +1375,7 @@ DeathTest::TestRole ExecDeathTest::AssumeRole() {
                                     StreamableToString(line_) + "|" +
                                     StreamableToString(death_test_index) + "|" +
                                     StreamableToString(pipe_fd[1]);
-  std::vector<std::string> args = GetArgvsForDeathTestChildProcess();
+  std::value<std::string> args = GetArgvsForDeathTestChildProcess();
   args.push_back(filter_flag);
   args.push_back(internal_flag);
 

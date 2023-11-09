@@ -1,30 +1,66 @@
 #include "Figure.h"
-#include "Vector.h"
-//#include "Rhomb.h"
-//#include "Trapezoid.h"
-
-Figure::Figure() = default;
+#include "Point.h"
 
 Figure::Figure(Vector<Point> peaks) {
-    Vector<Point> peaks_array = peaks;
-    double size_peaks_array = peaks_array.size();
+    points = peaks;
+    size = peaks.size();
 }
 
-Point Figure::centerOfRounding() {
-    double sum_x = 0.0;
-    double sum_y = 0.0;
-    for (int index = 0; index < size_peaks_array; ++index) {
-        sum_x += peaks_array[index].getX();
-        sum_y += peaks_array[index].getY();
+Vector<Point> Figure::GetArray() const {
+    return points;
+}
+
+Point Figure::center() const {
+    double sum_x = 0;
+    double sum_y = 0;
+    for (int index = 0; index < size; ++index) {
+        sum_x += points[index].getX();
+        sum_y += points[index].getY();
     }
-    return *new Point(sum_x /size_peaks_array, sum_y /size_peaks_array);
+    return Point(sum_x / size, sum_y / size);
 }
 
-std::ostream &operator<<(std::ostream &out, Figure * baseFigure) {
-    for (int indexOfPeak = 0; indexOfPeak < Figure->size_peaks_array; ++indexOfPeak) {
-        out << "peak: " << indexOfPeak << " {" << Figure->peaks_array[index] << "}" << std::endl;
+std::ostream& operator<<(std::ostream& os, const Figure& figure) {
+    for (int i = 0; i < figure.size; i++) {
+        os << i + 1 << " вершина " << figure.points[i] << "; ";
     }
-    return out;
+    return os;
 }
 
-Figure::~Figure() = default;
+std::istream& operator>>(std::istream& is, Figure& figure) {
+    figure.points.clear();
+    is >> figure.size;
+    std::cout << std::endl;
+    for (int i = 0; i < figure.size; ++i) {
+        std::cout << i + 1 << " вершина:" << std::endl;
+        Point point;
+        is >> point;
+        figure.points.push_back(point);
+    }
+    return is;
+}
+
+Figure::Figure(const Figure& other) {
+    points = other.points;
+    size = other.size;
+}
+
+Figure& Figure::operator=(const Figure& other) {
+    if (this != &other) {
+        points = other.points;
+        size = other.size;
+    }
+    return *this;
+}
+
+Figure& Figure::operator=(Figure&& other) noexcept {
+    if (this != &other) {
+        points = std::move(other.points);
+        size = other.size;
+    }
+    return *this;
+}
+
+bool Figure::operator==(const Figure& other) const {
+    return points == other.points && size == other.size;
+}
