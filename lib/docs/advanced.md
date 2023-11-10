@@ -396,7 +396,7 @@ If you want to print a value `x` using GoogleTest's value printer yourself, just
 call `::testing::PrintToString(x)`, which returns an `std::string`:
 
 ```c++
-vector<pair<Point, int> > point_ints = GetPointIntVector();
+value<pair<Point, int> > point_ints = GetPointIntVector();
 
 EXPECT_TRUE(IsCorrectPointIntVector(point_ints))
     << "point_ints = " << testing::PrintToString(point_ints);
@@ -1625,7 +1625,7 @@ class MyTest : public MyFixture {
   int data_;
 };
 
-void RegisterMyTests(const std::vector<int>& values) {
+void RegisterMyTests(const std::value<int>& values) {
   for (int v : values) {
     testing::RegisterTest(
         "MyFixture", ("Test" + std::to_string(v)).c_str(), nullptr,
@@ -1638,7 +1638,7 @@ void RegisterMyTests(const std::vector<int>& values) {
 ...
 int main(int argc, char** argv) {
   testing::InitGoogleTest(&argc, argv);
-  std::vector<int> values_to_test = LoadValuesFromConfig();
+  std::value<int> values_to_test = LoadValuesFromConfig();
   RegisterMyTests(values_to_test);
   ...
   return RUN_ALL_TESTS();

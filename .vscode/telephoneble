@@ -1,0 +1,17 @@
+class Telephoneble {
+    virtual void ring();
+    virtual void answerCall();
+    virtual void declineCall();
+}
+
+class smartphone : public Telephoneble{
+    void ring() override{
+        cout << "smartphone is ringing" << endl;
+    }
+    void answerCall() override{
+         cout << "smartphone is answering" << endl;
+    }
+    void declineCall() override{
+        cout << "smartphone is decline" << endl;
+    }
+}

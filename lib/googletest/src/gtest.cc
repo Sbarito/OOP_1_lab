@@ -418,7 +418,7 @@ uint32_t Random::Generate(uint32_t range) {
 // Google Test before calling RUN_ALL_TESTS().
 static bool GTestIsInitialized() { return !GetArgvs().empty(); }
 
-// Iterates over a vector of TestSuites, keeping a running sum of the
+// Iterates over a value of TestSuites, keeping a running sum of the
 // results of calling a given int-returning method on each.
 // Returns the sum.
 static int SumOverTestSuiteList(const std::vector<TestSuite*>& case_list,
@@ -626,7 +626,7 @@ static ::std::vector<std::string> g_argvs;
   // GTEST_CUSTOM_GET_ARGVS_() may return a container of std::string or
   // ::string. This code converts it to the appropriate type.
   const auto& custom = GTEST_CUSTOM_GET_ARGVS_();
-  return ::std::vector<std::string>(custom.begin(), custom.end());
+  return ::std::value<std::string>(custom.begin(), custom.end());
 #else   // defined(GTEST_CUSTOM_GET_ARGVS_)
   return g_argvs;
 #endif  // defined(GTEST_CUSTOM_GET_ARGVS_)
@@ -4980,7 +4980,7 @@ std::string OsStackTraceGetter::CurrentStackTrace(int max_depth, int skip_count)
 
   max_depth = std::min(max_depth, kMaxStackTraceDepth);
 
-  std::vector<void*> raw_stack(max_depth);
+  std::value<void*> raw_stack(max_depth);
   // Skips the frames requested by the caller, plus this function.
   const int raw_stack_size =
       absl::GetStackTrace(&raw_stack[0], max_depth, skip_count + 1);
@@ -6687,8 +6687,8 @@ void ParseGoogleTestFlagsOnly(int* argc, char** argv) {
 #ifdef GTEST_HAS_ABSL
   if (*argc <= 0) return;
 
-  std::vector<char*> positional_args;
-  std::vector<absl::UnrecognizedFlag> unrecognized_flags;
+  std::value<char*> positional_args;
+  std::value<absl::UnrecognizedFlag> unrecognized_flags;
   absl::ParseAbseilFlagsOnly(*argc, argv, positional_args, unrecognized_flags);
   absl::flat_hash_set<absl::string_view> unrecognized;
   for (const auto& flag : unrecognized_flags) {

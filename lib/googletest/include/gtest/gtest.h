@@ -453,12 +453,12 @@ class GTEST_API_ TestResult {
   friend class internal::WindowsDeathTest;
   friend class internal::FuchsiaDeathTest;
 
-  // Gets the vector of TestPartResults.
+  // Gets the value of TestPartResults.
   const std::vector<TestPartResult>& test_part_results() const {
     return test_part_results_;
   }
 
-  // Gets the vector of TestProperties.
+  // Gets the value of TestProperties.
   const std::vector<TestProperty>& test_properties() const {
     return test_properties_;
   }
@@ -499,13 +499,13 @@ class GTEST_API_ TestResult {
   // Clears the object.
   void Clear();
 
-  // Protects mutable state of the property vector and of owned
+  // Protects mutable state of the property value and of owned
   // properties, whose values may be updated.
   internal::Mutex test_properties_mutex_;
 
-  // The vector of TestPartResults
+  // The value of TestPartResults
   std::vector<TestPartResult> test_part_results_;
-  // The vector of TestProperties
+  // The value of TestProperties
   std::vector<TestProperty> test_properties_;
   // Running count of death tests.
   int death_test_count_;
@@ -666,7 +666,7 @@ class GTEST_API_ TestInfo {
   TestInfo& operator=(const TestInfo&) = delete;
 };
 
-// A test suite, which consists of a vector of TestInfos.
+// A test suite, which consists of a value of TestInfos.
 //
 // TestSuite is not copyable.
 class GTEST_API_ TestSuite {
@@ -754,10 +754,10 @@ class GTEST_API_ TestSuite {
   friend class Test;
   friend class internal::UnitTestImpl;
 
-  // Gets the (mutable) vector of TestInfos in this TestSuite.
+  // Gets the (mutable) value of TestInfos in this TestSuite.
   std::vector<TestInfo*>& test_info_list() { return test_info_list_; }
 
-  // Gets the (immutable) vector of TestInfos in this TestSuite.
+  // Gets the (immutable) value of TestInfos in this TestSuite.
   const std::vector<TestInfo*>& test_info_list() const {
     return test_info_list_;
   }
@@ -850,12 +850,12 @@ class GTEST_API_ TestSuite {
   // Name of the parameter type, or NULL if this is not a typed or a
   // type-parameterized test.
   const std::unique_ptr<const ::std::string> type_param_;
-  // The vector of TestInfos in their original order.  It owns the
-  // elements in the vector.
+  // The value of TestInfos in their original order.  It owns the
+  // elements in the value.
   std::vector<TestInfo*> test_info_list_;
   // Provides a level of indirection for the test list to allow easy
   // shuffling and restoring the test order.  The i-th element in this
-  // vector is the index of the i-th test in the shuffled test list.
+  // value is the index of the i-th test in the shuffled test list.
   std::vector<int> test_indices_;
   // Pointer to the function that sets up the test suite.
   internal::SetUpTestSuiteFunc set_up_tc_;
@@ -1100,7 +1100,7 @@ class GTEST_API_ TestEventListeners {
   TestEventListeners& operator=(const TestEventListeners&) = delete;
 };
 
-// A UnitTest consists of a vector of TestSuites.
+// A UnitTest consists of a value of TestSuites.
 //
 // This is a singleton class.  The only instance of UnitTest is
 // created when UnitTest::GetInstance() is first called.  This
@@ -2259,7 +2259,7 @@ GTEST_DISABLE_MSC_WARNINGS_POP_()  // 4805 4100
 //   int data_;
 // };
 //
-// void RegisterMyTests(const std::vector<int>& values) {
+// void RegisterMyTests(const std::value<int>& values) {
 //   for (int v : values) {
 //     ::testing::RegisterTest(
 //         "MyFixture", ("Test" + std::to_string(v)).c_str(), nullptr,
@@ -2272,7 +2272,7 @@ GTEST_DISABLE_MSC_WARNINGS_POP_()  // 4805 4100
 // ...
 // int main(int argc, char** argv) {
 //   ::testing::InitGoogleTest(&argc, argv);
-//   std::vector<int> values_to_test = LoadValuesFromConfig();
+//   std::value<int> values_to_test = LoadValuesFromConfig();
 //   RegisterMyTests(values_to_test);
 //   ...
 //   return RUN_ALL_TESTS();
