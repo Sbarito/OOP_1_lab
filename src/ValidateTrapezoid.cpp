@@ -1,6 +1,13 @@
 #include "ValidateTrapezoid.h"
+#include "Trapezoid.h"
 
-bool ValidateTrapezoid::Validate(Vector<Point> peaks) {
+template<typename T>
+bool ValidateTrapezoid<T>::isAllowedForType(const std::type_info &typeInfo) {
+    return typeid(Trapezoid<T>) == typeInfo;
+}
+
+template<typename T>
+bool ValidateTrapezoid<T>::validateFigure(Vector<Point<T>> peaks) {
     if (peaks.size() != 4) {
         throw "Некорректный трапезоид (не то количество вершин)";
     }
@@ -11,9 +18,4 @@ bool ValidateTrapezoid::Validate(Vector<Point> peaks) {
         throw "Некорректный трапезоид (трапеция неравнобедренная)";
     }
     return true;
-}
-
-bool ValidateTrapezoid::TrapezoidValidate(Vector<Point> peaks) {
-    ValidateTrapezoid validator;
-    return validator.Validate(peaks);
 }

@@ -1,16 +1,20 @@
 #include "Pentagon.h"
 
-Pentagon::Pentagon(Vector<Point> peaks) {
+template<typename T>
+Pentagon<T>::Pentagon(Vector<Point<T>> peaks) {
     points = peaks;
     size = peaks.size();
 }
 
-Pentagon Pentagon::CreatePentagon(Vector<Point> peaks) {
-    ValidatePentagon::PentagonValidate(peaks);
-    return Pentagon(peaks);
+template<typename T>
+Pentagon<T>& Pentagon<T>::CreatePentagon(Vector<Point<T>> peaks) {
+    ValidateFigure<T>::Validate(typeid(Pentagon), peaks);
+    Pentagon<T> pentagon(peaks);
+    return pentagon;
 }
 
-Pentagon::operator double() const {
-    Vector<Point> points = GetArray();
+template<typename T>
+Pentagon<T>::operator double() const {
+    Vector<Point<T>> points = GetArray();
     return abs((this->center()).getY() - points[2].getY()) * abs(points[2].getX() - points[3].getX()) / 2 * 5;
 }

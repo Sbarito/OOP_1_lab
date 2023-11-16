@@ -1,10 +1,16 @@
+
 #pragma once
+#include "IValidateFigure.h"
 
-#include "ValidateFigure.h"
-#include "Pentagon.h"
-
-class ValidatePentagon : public ValidateFigure {
+template<typename T>
+class ValidatePentagon : public IValidateFigure<T>{
 public:
-    bool Validate(Vector<Point> peaks) override;
-    static bool PentagonValidate(Vector<Point> peaks);
+
+    ValidatePentagon() = default;
+
+    bool isAllowedForType(const std::type_info& typeInfo) override;
+
+    bool validateFigure(Vector<Point<T>> peaks) override;
+
+    ~ValidatePentagon() = default;
 };

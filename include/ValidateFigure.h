@@ -1,9 +1,14 @@
 #pragma once
-#include <iostream>
-#include "Vector.h"
-#include "Point.h"
+#include "IValidateFigure.h"
+#include "ValidatePentagon.h"
+#include "ValidateRhomb.h"
+#include "ValidateTrapezoid.h"
 
-class ValidateFigure {
-    public:
-        virtual bool Validate(Vector <Point> peaks) = 0;
+
+template<class T>
+class ValidateFigure{
+    static Vector<IValidateFigure<T>> _validators;
+
+public:
+    static void Validate(const std::type_info &, Vector<Point<T>>);
 };

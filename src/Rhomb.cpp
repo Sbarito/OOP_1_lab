@@ -1,16 +1,20 @@
 #include "Rhomb.h"
 
-Rhomb::Rhomb(Vector<Point> peaks) {
+template<typename T>
+Rhomb<T>::Rhomb(Vector<Point<T>> peaks) {
     points = peaks;
     size = peaks.size();
 }
 
-Rhomb Rhomb::CreateRhomb(Vector<Point> peaks) {
-    ValidateRhomb::RhombValidate(peaks);
-    return Rhomb(peaks);
+template<typename T>
+Rhomb<T>& Rhomb<T>::CreateRhomb(Vector<Point<T>> peaks) {
+    ValidateFigure<T>::Validate(typeid(Rhomb), peaks);
+    Rhomb<T> rhomb(peaks);
+    return rhomb;
 }
 
-Rhomb::operator double() const {
-    Vector<Point> points = GetArray();
+template<typename T>
+Rhomb<T>::operator double() const {
+    Vector<Point<T>> points = GetArray();
     return abs(points[0].getY() - points[2].getY()) * abs(points[1].getX() - points[3].getX()) / 2;
 }

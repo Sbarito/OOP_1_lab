@@ -1,6 +1,13 @@
 #include "ValidatePentagon.h"
+#include "Pentagon.h"
 
-bool ValidatePentagon::Validate(Vector<Point> peaks) {
+template<typename T>
+bool ValidatePentagon<T>::isAllowedForType(const std::type_info &typeInfo) {
+    return typeid(Pentagon<T>) == typeInfo;
+}
+
+template<typename T>
+bool ValidatePentagon<T>::validateFigure(Vector<Point<T>> peaks) {
     if (peaks.size() != 5) {
         throw "Некорректный пентагон (не то количество вершин)";
     }
@@ -17,9 +24,4 @@ bool ValidatePentagon::Validate(Vector<Point> peaks) {
         throw "Некорректный пентагон (стороны не равны)";
     }
     return true;
-}
-
-bool ValidatePentagon::PentagonValidate(Vector<Point> peaks) {
-    ValidatePentagon validator;
-    return validator.Validate(peaks);
 }

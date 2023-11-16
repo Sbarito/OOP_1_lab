@@ -1,10 +1,15 @@
+
 #pragma once
+#include "IValidateFigure.h"
 
-#include "ValidateFigure.h"
-#include "Trapezoid.h"
-
-class ValidateTrapezoid : public ValidateFigure {
+template<typename T>
+class ValidateTrapezoid : public IValidateFigure<T>{
 public:
-    bool Validate(Vector<Point> peaks) override;
-    static bool TrapezoidValidate(Vector<Point> peaks);
+    ValidateTrapezoid() = default;
+
+    bool isAllowedForType(const std::type_info& typeInfo) override;
+
+    bool validateFigure(Vector<Point<T>> peaks) override;
+
+    ~ValidateTrapezoid() = default;
 };

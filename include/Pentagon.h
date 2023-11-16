@@ -1,13 +1,20 @@
 #pragma once
 
 #include "Figure.h"
-#include "ValidatePentagon.h"
 
-class Pentagon : public Figure {
+template<typename T>
+class Pentagon : public Figure<T> {
 public:
+    using Figure<T>::size;
+    using Figure<T>::points;
+
     Pentagon() = default;
-    Pentagon(Vector<Point> peaks);
-    static Pentagon CreatePentagon(Vector<Point> peaks);
+
+    Pentagon(Vector<Point<T>> peaks);
+
+    static Pentagon& CreatePentagon(Vector<Point<T>> peaks);
+
     operator double() const override;
+
     ~Pentagon() = default;
 };

@@ -1,14 +1,20 @@
 #pragma once
 
 #include "Figure.h"
-#include "ValidateTrapezoid.h"
 
-class Trapezoid : public Figure {
+template<typename T>
+class Trapezoid : public Figure<T> {
 public:
+    using Figure<T>::size;
+    using Figure<T>::points;
+
     Trapezoid() = default;
-    Trapezoid(Vector<Point> peaks);
-    static Trapezoid CreateTrapezoid(Vector<Point> peaks);
+
+    Trapezoid(Vector<Point<T>> peaks);
+
+    static Trapezoid& CreateTrapezoid(Vector<Point<T>> peaks);
+
     operator double() const override;
+
     ~Trapezoid() = default;
 };
-

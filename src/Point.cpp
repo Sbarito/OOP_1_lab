@@ -1,24 +1,29 @@
 #include "Point.h"
 
-Point::Point(double x0, double y0) {
+template<typename T>
+Point<T>::Point(T x0, T y0) {
     x = x0;
     y = y0;
 }
 
-double Point::getX() const {
+template<typename T>
+T Point<T>::getX() const {
     return x;
 }
 
-double Point::getY() const {
+template<typename T>
+T Point<T>::getY() const {
     return y;
 }
 
-std::ostream& operator<<(std::ostream& out, const Point& point) {
+template<typename T>
+std::ostream& operator<<(std::ostream& out, const Point<T>& point) {
     out << "(" << point.x << ", " << point.y << ")";
     return out;
 }
 
-std::istream& operator>>(std::istream& is, Point& point) {
+template<typename T>
+std::istream& operator>>(std::istream& is, Point<T>& point) {
     std::cout << "Введите значение x: ";
     is >> point.x;
     std::cout << "Введите значение y: ";
@@ -27,6 +32,7 @@ std::istream& operator>>(std::istream& is, Point& point) {
     return is;
 }
 
-bool Point::operator!=(const Point& other) const {
+template<typename T>
+bool Point<T>::operator!=(const Point<T>& other) const {
     return x != other.x || y != other.y;
 }
